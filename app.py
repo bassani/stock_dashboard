@@ -17,13 +17,13 @@ def build_sidebar():
     end_date = st.date_input("Até", format="DD/MM/YYYY", value="today")
 
     if tickers:
-        prices = yf.download(tickers, start=start_date, end=end_date)["Adj Close"]
+        prices = yf.download(tickers, start=start_date, end=end_date)["Close"]
         if len(tickers) == 1:
-            prices = prices.to_frame()
+            #prices = prices.to_frame()
             prices.columns = [tickers[0].rstrip(".SA")]
                     
         prices.columns = prices.columns.str.rstrip(".SA")
-        prices['IBOV'] = yf.download("^BVSP", start=start_date, end=end_date)["Adj Close"]
+        prices['IBOV'] = yf.download("^BVSP", start=start_date, end=end_date)["Close"]
         return tickers, prices
     return None, None
 
