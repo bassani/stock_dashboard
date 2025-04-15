@@ -11,7 +11,7 @@ from streamlit_extras.grid import grid
 def build_sidebar():
     st.image("images/logo-250-100-transparente.png")
     ticker_list = pd.read_csv("tickers_ibra.csv", index_col=0)
-    tickers = st.multiselect(label="Selecione as Empresas", options=ticker_list, placeholder='Códigos', default=['TAEE11', 'ROMI3', 'WEGE3', 'CMIG4', 'BRSR6', 'ISAE4', 'BBDC3', 'CSMG3', 'POMO4', 'BRAP4', 'CMIN3', 'MRFG3', 'CSNA3', 'PETR4', 'LEVE3', 'BBAS3', 'KLBN4'])
+    tickers = st.multiselect(label="Selecione as Empresas", options=ticker_list, placeholder='Códigos', default=['TAEE11', 'ROMI3', 'WEGE3', 'CMIG4', 'BRSR6', 'ISAE4', 'BBDC3', 'CSMG3', 'POMO4', 'BRAP4', 'CMIN3', 'MRFG3', 'CSNA3', 'PETR4', 'LEVE3', 'BBAS3', 'KLBN11'])
     tickers = [t+".SA" for t in tickers]
     start_date = st.date_input("De", format="DD/MM/YYYY", value=datetime(2025,4,2))
     end_date = st.date_input("Até", format="DD/MM/YYYY", value="today")
