@@ -53,8 +53,6 @@ def build_main(tickers, prices):
     col1, col2 = st.columns(2, gap='large')
     with col1:
         st.subheader("Desempenho Relativo")
-        #st.line_chart(norm_prices, height=600)
-        st.subheader("Desempenho Relativo")
         fig_line = px.line(norm_prices, labels={'value': '%', 'variable': 'Ativo'},
                            hover_data={'value': ':.2f'},
                            )
