@@ -49,11 +49,18 @@ def build_main(tickers, prices):
         colB.metric(label="retorno", value=f"{rets[t]:.0%}")
         colC.metric(label="volatilidade", value=f"{vols[t]:.0%}")
         style_metric_cards(background_color='rgba(255,255,255,0)')
-
+    
     col1, col2 = st.columns(2, gap='large')
     with col1:
         st.subheader("Desempenho Relativo")
-        st.line_chart(norm_prices, height=600)
+        #st.line_chart(norm_prices, height=600)
+        st.subheader("Desempenho Relativo")
+        fig_line = px.line(norm_prices, labels={'value': '%', 'variable': 'Ativo'},
+                           hover_data={'value': ':.2f'},
+                           )
+        fig_line.update_traces(mode="markers+lines", hovertemplate="%{y:.2f}%")
+        fig_line.update_layout(height=600, hovermode="x unified")
+        st.plotly_chart(fig_line, use_container_width=True)
 
     with col2:
         st.subheader("Risco-Retorno")
